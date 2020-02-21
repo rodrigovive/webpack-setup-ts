@@ -1,4 +1,5 @@
 const a = 123;
+console.log('test', a);
 
 type User = {
   name: string;
@@ -11,4 +12,5 @@ function getUserName(user: User): string {
 
 getUserName({
   name: 'test',
+  age: 7,
 });
