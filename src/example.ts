@@ -11,5 +11,5 @@ function getUserName(user: User): string {
 
 getUserName({
   name: 'test',
-  age: 7,
+  age: 1,
 });
