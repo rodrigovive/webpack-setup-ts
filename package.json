@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "precommit": "npm run validate"
+      "pre-commit": "npm run validate"
     }
   },
   "author": "",
