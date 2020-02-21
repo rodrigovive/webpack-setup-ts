@@ -9,8 +9,12 @@
     "format": "npm run prettier -- --write",
     "validate": "npm run lint && npm run prettier -- --list-different && npm run tsc",
     "prettier": "prettier \"src/**/*.+(js|jsx|ts|tsx)\"",
-    "tsc": "tsc",
-    "pre-commit": "npm run validate"
+    "tsc": "tsc"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "npm run validate"
+    }
   },
   "author": "",
   "license": "ISC",
