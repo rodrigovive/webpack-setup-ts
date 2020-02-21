@@ -10,7 +10,7 @@
     "validate": "npm run lint && npm run prettier -- --list-different && npm run tsc",
     "prettier": "prettier \"src/**/*.+(js|jsx|ts|tsx)\"",
     "tsc": "tsc",
-    "precommit": "npm run validate"
+    "pre-commit": "npm run validate"
   },
   "author": "",
   "license": "ISC",
