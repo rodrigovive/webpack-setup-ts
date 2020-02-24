@@ -4,13 +4,15 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 module.exports = function(_env, argv) {
   const isProduction = argv.mode === 'production';
   const isDevelopment = !isProduction;
 
   return {
     devtool: isDevelopment && 'cheap-module-source-map',
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'assets/js/[name].[contenthash:8].js',
@@ -19,7 +21,7 @@ module.exports = function(_env, argv) {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
+          test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
@@ -61,7 +63,7 @@ module.exports = function(_env, argv) {
       ],
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     plugins: [
       isProduction &&
@@ -77,6 +79,9 @@ module.exports = function(_env, argv) {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public/index.html'),
         inject: true,
+      }),
+      new ForkTsCheckerWebpackPlugin({
+        async: false,
       }),
     ].filter(Boolean),
     optimization: {
