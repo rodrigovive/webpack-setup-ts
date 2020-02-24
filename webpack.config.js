@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = function(_env, argv) {
   const isProduction = argv.mode === 'production';
@@ -60,6 +61,29 @@ module.exports = function(_env, argv) {
             name: 'static/media/[name].[hash:8].[ext]',
           },
         },
+        {
+          test: /\.s[ac]ss$/,
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+              },
+            },
+            'resolve-url-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.worker\.js$/,
+          loader: 'worker-loader',
+        },
       ],
     },
     resolve: {
@@ -82,6 +106,11 @@ module.exports = function(_env, argv) {
       }),
       new ForkTsCheckerWebpackPlugin({
         async: false,
+      }),
+      new WorkboxPlugin.GenerateSW({
+        swDest: 'service-worker.js',
+        clientsClaim: true,
+        skipWaiting: true,
       }),
     ].filter(Boolean),
     optimization: {
