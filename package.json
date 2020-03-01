@@ -7,7 +7,7 @@
     "test": "jest",
     "lint": "eslint \"src/**/*.+(js|jsx|ts|tsx)\"",
     "format": "npm run prettier -- --write",
-    "validate": "npm run lint && npm run prettier -- --list-different",
+    "validate": "npm run lint && npm run test && npm run prettier -- --list-different",
     "prettier": "prettier \"src/**/*.+(js|jsx|ts|tsx)\"",
     "tsc": "tsc",
     "tsc-init": "./node_modules/.bin/tsc -init --lib dom --jsx react --isolatedModules",
@@ -49,6 +49,7 @@
     "@typescript-eslint/parser": "^2.20.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "babel-preset-latest": "^6.24.1",
     "css-loader": "^3.4.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -78,7 +79,9 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.27",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-flip-toolkit": "^7.0.8"
   }
 }

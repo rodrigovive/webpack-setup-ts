@@ -1,0 +1,13 @@
+.full-screen-square {
+  color: blue;
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+
+.square {
+  color: blue;
+  background-color: blue;
+  width: 20px;
+  height: 20px;
+}

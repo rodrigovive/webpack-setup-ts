@@ -4,7 +4,14 @@
     "ecmaVersion": 2020
   },
   "rules": {
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0,
+    "react/prop-types": [
+      1,
+      {
+        "ignore": ["context", "tracking"]
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": 0
   },
   "extends": [
     "eslint:recommended",
@@ -16,5 +23,18 @@
   "env": {
     "browser": true,
     "node": true
-  }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ]
 }
