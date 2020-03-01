@@ -14,7 +14,7 @@
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode=production",
     "post-build": "cp ./public.index.html ./dist/index.html",
-    "start": "serve --no-clipboard --listen 8080 dist"
+    "start": "npm run dev"
   },
   "husky": {
     "hooks": {
